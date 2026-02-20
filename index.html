@@ -523,6 +523,7 @@
             border-radius: 16px; padding: 32px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         .more-app-card:hover {
             border-color: rgba(var(--purple-light-rgb), 0.2);
@@ -555,6 +556,11 @@
             padding: 100px 24px; text-align: center;
         }
         .cta-inner { max-width: 520px; margin: 0 auto; }
+        .cta-label {
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--purple-light);
+            margin-bottom: 16px;
+        }
         .cta-title {
             font-size: clamp(1.6rem, 3.5vw, 2.2rem);
             font-weight: 800; letter-spacing: -1px; margin-bottom: 16px;
@@ -819,6 +825,7 @@
     <section class="cta" id="contact" style="position: relative;">
         <div class="flow-line flow-line--cta"></div>
         <div class="cta-inner reveal">
+            <div class="cta-label">Get Involved</div>
             <h2 class="cta-title">Got an App Idea?</h2>
             <p class="cta-desc">We're always looking for the next thing to build. If you have an idea for an app or a game, we'd love to hear it.</p>
             <a href="mailto:smallempirestudiosofficial@gmail.com?subject=App%20Idea%20Submission&body=Hey%20Small%20Empire%20Studios%2C%0A%0AI%20have%20an%20idea%20for%20an%20app%3A%0A%0A" class="cta-btn">
