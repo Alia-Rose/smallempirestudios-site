@@ -891,11 +891,15 @@
         function updateActiveDot() {
             if (clickLock) { setActiveDot(clickLock); return; }
             const scrollTop = window.scrollY;
+            const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+            const atBottom = (scrollTop + window.innerHeight) >= docHeight - 150;
+            if (atBottom) { setActiveDot(sections[sections.length - 1]); return; }
             let current = sections[0];
             sections.forEach(id => {
                 const el = document.getElementById(id);
                 if (!el) return;
-                if (scrollTop >= el.offsetTop - 120) {
+                const sectionTop = el.getBoundingClientRect().top + scrollTop;
+                if (scrollTop >= sectionTop - window.innerHeight * 0.6) {
                     current = id;
                 }
             });
