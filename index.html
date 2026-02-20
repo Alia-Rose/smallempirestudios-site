@@ -359,8 +359,8 @@
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
         }
         .philosophy-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
             padding: 40px 28px; text-align: center;
             transition: all 0.35s ease;
             position: relative; overflow: hidden;
@@ -369,12 +369,13 @@
         .philosophy-card:last-child { border-radius: 0 16px 16px 0; }
         .philosophy-card::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(var(--purple-deep-rgb), 0.06), transparent);
+            background: linear-gradient(135deg, rgba(var(--purple-deep-rgb), 0.08), transparent);
             opacity: 0; transition: opacity 0.35s ease;
         }
         .philosophy-card:hover::after { opacity: 1; }
         .philosophy-card:hover {
-            border-color: rgba(var(--purple-light-rgb), 0.1);
+            border-color: rgba(var(--purple-light-rgb), 0.2);
+            background: rgba(255,255,255,0.05);
             transform: translateY(-2px);
         }
         .philosophy-icon {
@@ -387,7 +388,7 @@
             fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
         }
         .philosophy-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #eee; }
-        .philosophy-desc { font-size: 13px; color: #666; line-height: 1.6; }
+        .philosophy-desc { font-size: 13px; color: #999; line-height: 1.6; }
 
         /* ── Section divider ── */
         .section-divider {
@@ -725,7 +726,7 @@
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 </div>
                 <h3 class="philosophy-title">Made for You</h3>
-                <p class="philosophy-desc">Built by real people for real people. No corporate agenda, just apps we love.</p>
+                <p class="philosophy-desc">Built by people who actually use what they make. Every app solves a real problem.</p>
             </div>
         </div>
     </section>
