@@ -21,7 +21,8 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        section[id] { scroll-margin-top: 80px; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--bg);
@@ -875,26 +876,21 @@
             });
         });
 
-        // Active dot on scroll — track which section is most in view
+        // Active dot on scroll — highlight the section currently at the top
         function updateActiveDot() {
-            let closest = null;
-            let closestDist = Infinity;
-            const viewMid = window.innerHeight / 3;
-            sections.forEach(id => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                const rect = el.getBoundingClientRect();
-                const dist = Math.abs(rect.top - viewMid);
-                if (dist < closestDist) {
-                    closestDist = dist;
-                    closest = id;
+            const navOffset = 100;
+            let current = sections[0];
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const el = document.getElementById(sections[i]);
+                if (!el) continue;
+                if (el.getBoundingClientRect().top <= navOffset) {
+                    current = sections[i];
+                    break;
                 }
-            });
-            if (closest) {
-                dots.forEach(d => d.classList.remove('active'));
-                const activeDot = document.querySelector(`.section-nav-dot[data-target="${closest}"]`);
-                if (activeDot) activeDot.classList.add('active');
             }
+            dots.forEach(d => d.classList.remove('active'));
+            const activeDot = document.querySelector(`.section-nav-dot[data-target="${current}"]`);
+            if (activeDot) activeDot.classList.add('active');
         }
         window.addEventListener('scroll', updateActiveDot, { passive: true });
         updateActiveDot();
