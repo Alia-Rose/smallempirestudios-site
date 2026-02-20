@@ -668,6 +668,10 @@
             <span class="tooltip">Apps</span>
         </button>
         <div class="section-nav-line"></div>
+        <button class="section-nav-dot" data-target="pipeline">
+            <span class="tooltip">Pipeline</span>
+        </button>
+        <div class="section-nav-line"></div>
         <button class="section-nav-dot" data-target="contact">
             <span class="tooltip">Contact</span>
         </button>
@@ -784,7 +788,7 @@
     </section>
 
     <!-- Coming Soon Apps -->
-    <section class="more-apps">
+    <section class="more-apps" id="pipeline">
         <div class="more-apps-header reveal">
             <div class="more-apps-label">In the Pipeline</div>
             <h2 class="more-apps-title">What's Next</h2>
@@ -860,7 +864,7 @@
         });
 
         // ── Section nav dots ──
-        const sections = ['home', 'about', 'apps', 'contact'];
+        const sections = ['home', 'about', 'apps', 'pipeline', 'contact'];
         const dots = document.querySelectorAll('.section-nav-dot');
 
         // Click to scroll
