@@ -875,20 +875,29 @@
             });
         });
 
-        // Active dot on scroll
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    dots.forEach(d => d.classList.remove('active'));
-                    const activeDot = document.querySelector(`.section-nav-dot[data-target="${entry.target.id}"]`);
-                    if (activeDot) activeDot.classList.add('active');
+        // Active dot on scroll — track which section is most in view
+        function updateActiveDot() {
+            let closest = null;
+            let closestDist = Infinity;
+            const viewMid = window.innerHeight / 3;
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const rect = el.getBoundingClientRect();
+                const dist = Math.abs(rect.top - viewMid);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closest = id;
                 }
             });
-        }, { threshold: 0.3 });
-        sections.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) sectionObserver.observe(el);
-        });
+            if (closest) {
+                dots.forEach(d => d.classList.remove('active'));
+                const activeDot = document.querySelector(`.section-nav-dot[data-target="${closest}"]`);
+                if (activeDot) activeDot.classList.add('active');
+            }
+        }
+        window.addEventListener('scroll', updateActiveDot, { passive: true });
+        updateActiveDot();
 
         // ── Nav shrink on scroll ──
         const navbar = document.getElementById('navbar');
