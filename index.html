@@ -498,35 +498,42 @@
         /* ── More apps (coming soon grid) ── */
         .more-apps {
             position: relative; z-index: 1;
-            padding: 20px 24px 80px;
+            padding: 40px 24px 80px;
+        }
+        .more-apps-header {
+            text-align: center; margin-bottom: 36px;
         }
         .more-apps-label {
-            text-align: center; font-size: 11px; font-weight: 700;
+            font-size: 11px; font-weight: 700;
             letter-spacing: 3px; text-transform: uppercase;
-            color: #444; margin-bottom: 32px;
+            color: var(--purple-light); margin-bottom: 16px;
+        }
+        .more-apps-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800; letter-spacing: -1px; color: #fff;
         }
         .more-apps-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 20px; max-width: 860px; margin: 0 auto;
         }
         .more-app-card {
-            background: rgba(255,255,255,0.015);
-            border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 16px; padding: 28px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; padding: 32px;
             text-align: center;
             transition: all 0.3s ease;
         }
         .more-app-card:hover {
-            border-color: rgba(var(--purple-light-rgb), 0.08);
-            background: rgba(255,255,255,0.025);
+            border-color: rgba(var(--purple-light-rgb), 0.15);
+            background: rgba(255,255,255,0.045);
         }
         .more-app-icon {
             width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 12px;
-            background: rgba(var(--purple-light-rgb), 0.06);
+            background: rgba(var(--purple-deep-rgb), 0.12);
             display: flex; align-items: center; justify-content: center;
         }
         .more-app-icon svg {
-            width: 22px; height: 22px; stroke: rgba(var(--purple-light-rgb), 0.3);
+            width: 22px; height: 22px; stroke: var(--purple-light);
             fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
         }
         .more-app-name {
@@ -769,20 +776,32 @@
 
     <!-- Coming Soon Apps -->
     <section class="more-apps">
-        <div class="more-apps-label reveal">Coming Soon</div>
+        <div class="more-apps-header reveal">
+            <div class="more-apps-label">In the Pipeline</div>
+            <h2 class="more-apps-title">What's Next</h2>
+        </div>
         <div class="more-apps-grid">
             <div class="more-app-card reveal reveal-delay-1">
+                <div class="more-app-icon">
+                    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </div>
                 <div class="more-app-name" style="color: #ccc;">Quick Notes</div>
                 <div class="more-app-desc">Voice-first notes and idea capture with AI-powered tagging, search, and smart connections.</div>
                 <div class="more-app-status">Prototype</div>
             </div>
             <div class="more-app-card reveal reveal-delay-2">
+                <div class="more-app-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
+                </div>
                 <div class="more-app-name" style="color: #ccc;">Smart Meals</div>
                 <div class="more-app-desc">AI-powered meal planning with recipe extraction, nutrition tracking, and hands-free voice cooking mode.</div>
                 <div class="more-app-status">Concept</div>
             </div>
             <div class="more-app-card reveal reveal-delay-3">
-                <div class="more-app-name">Coming Soon</div>
+                <div class="more-app-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div class="more-app-name" style="color: #ccc;">Coming Soon</div>
                 <div class="more-app-desc">Something new is brewing. Stay tuned for our next project.</div>
                 <div class="more-app-status">TBA</div>
             </div>
