@@ -867,19 +867,29 @@
         // ── Section nav dots ──
         const sections = ['home', 'about', 'apps', 'pipeline', 'contact'];
         const dots = document.querySelectorAll('.section-nav-dot');
+        let clickLock = null;
 
-        // Click to scroll and immediately highlight the clicked dot
+        function setActiveDot(sectionId) {
+            dots.forEach(d => d.classList.remove('active'));
+            const dot = document.querySelector(`.section-nav-dot[data-target="${sectionId}"]`);
+            if (dot) dot.classList.add('active');
+        }
+
+        // Click to scroll — lock prevents scroll handler from overriding
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const target = dot.dataset.target;
-                dots.forEach(d => d.classList.remove('active'));
-                dot.classList.add('active');
+                clickLock = target;
+                setActiveDot(target);
                 document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+                window.addEventListener('scrollend', () => { clickLock = null; }, { once: true });
+                setTimeout(() => { clickLock = null; }, 1200);
             });
         });
 
-        // Active dot on scroll — highlight the section currently at the top
+        // Scroll tracking — skip if click animation is in progress
         function updateActiveDot() {
+            if (clickLock) { setActiveDot(clickLock); return; }
             const scrollTop = window.scrollY;
             let current = sections[0];
             sections.forEach(id => {
@@ -889,9 +899,7 @@
                     current = id;
                 }
             });
-            dots.forEach(d => d.classList.remove('active'));
-            const activeDot = document.querySelector(`.section-nav-dot[data-target="${current}"]`);
-            if (activeDot) activeDot.classList.add('active');
+            setActiveDot(current);
         }
         window.addEventListener('scroll', updateActiveDot, { passive: true });
         updateActiveDot();
